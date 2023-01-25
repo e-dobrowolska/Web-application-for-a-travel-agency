@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Timetable</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Timetable</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+    <!-- Destinations Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-3 pb-3">
+            {% for year in years: %}
+                <div class="text-center">
+                    <h1 class="mt-5 text-primary"><span class="text-dark">Tours in </span>{{year}}</h1>
+                </div>
+                {%for month in tours_dict[year]: %}
+                    {% if month: %}
+                    <div class="text-center mb-3 pb-3 mt-5 ">
+                        <h4 class="text-primary text-uppercase" style="letter-spacing: 4px;">{{month_name[loop.index]}}</h4>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                    {% for tour in month: %}
+                        <div class="col-lg-12 col-md-6">
+                            <div class="package-item bg-white mb-2">
+                                <div class="mt-2 p-3">
+                                    <div class="d-flex align-items-center justify-content-around">                                    
+                                        <h5 class="text-center m-0 pr-5" href="">{{tour.Destination}} </h5>
+                                        <small class="text-center m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{tour.Region}}</small>
+                                        <small class="text-center m-0"><i class="fa fa-hourglass-half text-primary mr-2"></i>{{tour.Duration}} Days</small>
+                                        <small class="text-center m-0"><i class="fa fa-child text-primary mr-2"></i>{{tour.Children}}</small>
+                                        <small class="text-center m-0"><i class="fa fa-plane text-primary mr-2"></i>{{tour.City_Of_Departure}}</small>
+                                        <small class="text-center m-0"><i class="fa fa-calendar-check text-primary mr-2"></i>{{tour.Start_Date}}</small>
+                                        <small class="text-center m-0"><i class="fa fa-calendar-times text-primary mr-2"></i>{{tour.End_Date}}</small>
+                                        <h5 class="text-primary text-center m-0">${{tour.Price}}</h5>
+                                        {% if current_user.is_authenticated and current_user.Email.split('@')[1]=='adventureclub.com': %}
+                                        <div class="d-flex justify-content-center">
+                                            <a href="{{ url_for('update_trip', id=tour.id) }}" class="btn btn-primary mx-1" style="background-color:grey; border-color:grey;">Update</a>
+                                            <a href="{{ url_for('delete_trip', id=tour.id) }}" class="btn btn-primary mx-1" style="background-color:red; border-color:red">Delete</a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Destinations End -->
+    {% endblock content2 %}

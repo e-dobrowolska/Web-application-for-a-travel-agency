@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">About</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">About</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Booking Start -->
+    <form action="#" method="POST">
+        <div class="container-fluid booking mt-5 pb-5">
+            <div class="container pb-5">
+                <div class="bg-light shadow" style="padding: 30px;">
+                    <div class="row align-items-center" style="min-height: 60px;">
+                        <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <select name = "destination" class="custom-select px-4" style="height: 47px;">
+                                                <option selected>All Destinations</option>
+                                                {% for destination in alldestinations: %}
+                                                <option value="{{destination}}">{{destination}}</option>
+                                                {% endfor %}    
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <div class="date" id="date1" data-target-input="nearest">
+                                                <input name = "start_date" type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <div class="date" id="date2" data-target-input="nearest">
+                                                <input name = "end_date" type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0">
+                                            <select name = "duration" class="custom-select px-4" style="height: 47px;">
+                                                <option selected>Duration</option>
+                                                {% for duration in alldurations: %}
+                                                <option value="{{duration}}">{{duration}}</option>
+                                                {% endfor %} 
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;" name="action" value="search">Search</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Booking End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+
+<!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="{{ url_for('static', filename='img/about.jpg') }}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
+                        <h1 class="mb-3">See the world with your own two eyes.</h1>
+                        <p>Are you ready for an adventure? The whole world awaits! Whether you dream of a sunny beach, a wild jungle or a scorching dessert, we will be there with you and for you. Only perfect destinations, only the most beautiful places. We make people homesick since 1995. </p>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="{{ url_for('static', filename='img/about-1.jpg') }}" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="{{ url_for('static', filename='img/about-2.jpg') }}" alt="">
+                            </div>
+                        </div>
+                        <a href="{{ url_for('destinations') }}" class="btn btn-primary mt-1">Let's go!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid pb-5">
+        <div class="container pb-5">
+                        <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Why us?</h6>
+                <h1>The choice is yours</h1>
+            </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                                <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h5 class="">Competitive Pricing</h5>
+                                <p class="m-0">We constantly monitor the market to provide the best possible prices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                                <i class="fa fa-2x fa-award text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h5 class="">Best Services</h5>
+                                <p class="m-0">Small groups, best travel guides and world-class organization.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex mb-4 mb-lg-0">
+                            <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                                <i class="fa fa-2x fa-globe text-white"></i>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <h5 class="">Worldwide Coverage</h5>
+                                <p class="m-0">We cover over 50 countries and frequently add new destinations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+    <!-- Registration Start -->
+    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Special Offer</h6>
+                        <h1 class="text-white"><span class="text-primary">20% OFF</span> For Students</h1>
+                    </div>
+                    <p class="text-white">Are you a university student? It's time to make your dreams come true - we have a special offer for you! Book your dream tour now and get extra discounts. </p>
+                    <ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Only with a valid Student ID card</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Applicable for all tours</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Bring a friend for an additional discount</li>
+                    </ul>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-center p-4">
+                            <h1 class="text-white m-0">Sign Up Now</h1>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="contact-form bg-white" style="padding: 30px;">
+                                    <div id="success"></div>
+                                    <form name="signupForm" id="signupForm" novalidate="novalidate"  method="POST">
+                                        <div class="control-group">
+                                            <input type="text" class="form-control p-4" name="name" id="name" placeholder="First Name"
+                                                required="required" data-validation-required-message="Please enter your first name" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <input type="email" class="form-control p-4" name="email" id="email" placeholder="Enter Email"
+                                                required="required" data-validation-required-message="Please enter your email" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <input type="password" class="form-control p-4" name="password1" id="password1" placeholder="Enter Password"
+                                                required="required" data-validation-required-message="Please enter a password" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="control-group">
+                                            <input type="password" class="form-control p-4" name="password2" id="password2" placeholder="Confirm password"
+                                                required="required" data-validation-required-message="Please enter a password" />
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="text-center">
+                                            <button class="btn btn-primary py-3 px-4 mt-3" type="submit" id="submitButton" name="action" value="register">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+
+
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Guides</h6>
+                <h1>Our Travel Guides</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ url_for('static', filename='img/team-1.jpg') }}" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-outline-primary btn-square" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.youtube.com/"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Joyce Archer</h5>
+                            <p class="m-0">Certified Tour Guide</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ url_for('static', filename='img/team-2.jpg') }}" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-outline-primary btn-square" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.youtube.com/"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Maya Jackson</h5>
+                            <p class="m-0">Certified Tour Guide</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ url_for('static', filename='img/team-3.jpg') }}" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-outline-primary btn-square" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.youtube.com/"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Naomi Lock</h5>
+                            <p class="m-0">Certified Tour Guide</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="{{ url_for('static', filename='img/team-4.jpg') }}" alt="">
+                            <div class="team-social">
+                                <a class="btn btn-outline-primary btn-square" href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-outline-primary btn-square" href="https://www.youtube.com/"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Elizabeth Clark</h5>
+                            <p class="m-0">Certified Tour Guide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    {% endblock content2 %}

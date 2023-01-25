@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Add New Trip</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Destinations</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Add New Trip</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    {% endblock content1 %}
+
+    {% block content2 %}
+     <!-- Add Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="signupForm" novalidate="novalidate"  method="POST">
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select name = "region" class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Region</option>
+                                        {% for region in allregions: %}
+                                        <option value="{{region}}">{{region}}</option>
+                                        {% endfor %}    
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" class="form-control p-4" name="Destination" id="Destination" placeholder="Destination"
+                                            required="required" data-validation-required-message="Please enter Destination" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input type="text" name = "start_date" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date2" data-target-input="nearest">
+                                        <input type="text" name = "end_date" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select name = "children" class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Children</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="price1">
+                                        <input type="number" name = "price" class="form-control p-4 datetimepicker-input" placeholder="Price" data-target="#price1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" class="form-control p-4" name="City" id="City" placeholder="City of departure"
+                                            required="required" data-validation-required-message="Please enter City of departure" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4 mt-3" type="submit" id="submitButton">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add End -->
+
+    {% endblock content2 %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+    {% block content1 %}
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Sign Up</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Sign Up</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+    <!-- Registration Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">join us</h6>
+                <h1>Create an account</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form name="signupForm" id="signupForm" novalidate="novalidate"  method="POST">
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4" name="name" id="name" placeholder="First Name"
+                                    required="required" data-validation-required-message="Please enter your first name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="email" class="form-control p-4" name="email" id="email" placeholder="Enter Email"
+                                    required="required" data-validation-required-message="Please enter your email" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="password" class="form-control p-4" name="password1" id="password1" placeholder="Enter Password"
+                                    required="required" data-validation-required-message="Please enter a password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <input type="password" class="form-control p-4" name="password2" id="password2" placeholder="Confirm password"
+                                    required="required" data-validation-required-message="Please enter a password" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4 mt-3" type="submit" id="submitButton">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+                <div>
+                    <p class="mt-4 text-black-50 text-center">Already have an account? <a href="{{ url_for('login') }}">Log In</a>
+                </div>
+        </div>
+    </div>
+    <!-- Registration End -->
+    {% endblock content2 %}

@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Destinations</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Destinations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Booking Start -->
+    <form action="#" method="POST">
+        <div class="container-fluid booking mt-5">
+            <div class="container pb-5">
+                <div class="bg-light shadow" style="padding: 30px;">
+                    <div class="row justify-content-center" style="min-height: 60px;">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <select id="all_classes" name = "selected_class" class="custom-select px-4" style="height: 47px;">
+                                                <option role="placeholder" id="hiddenOption">{{region_url if region_url else 'All Regions'}}</option>
+                                                {% for region in allregions: %}
+                                                <option value="{{region}}">{{region}}</option>
+                                                {% endfor %}    
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <select id = "all_entries" name = "destination" class="custom-select px-4" style="height: 47px;">
+                                                <option role="placeholder" id="hiddenOption">{{destination_url if destination_url else 'All Destinations'}}</option>
+                                                {% for destination in alldestinations: %}
+                                                <option value="{{destination}}">{{destination}}</option>
+                                                {% endfor %}  
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <div class="date" id="date1" data-target-input="nearest">
+                                                <input type="text" value="{{startdate_display}}" name = "start_date" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <div class="date" id="date2" data-target-input="nearest">
+                                                <input type="text" value="{{enddate_display}}" name = "end_date" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <select name = "children" class="custom-select px-4" style="height: 47px;">
+                                                <option role="placeholder" id="hiddenOption">{{children_url if children_url else 'Children'}}</option>
+                                                <option value="Children">Both</option>                                             
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <select name = "duration" class="custom-select px-4" style="height: 47px;" onchange="var opt=this.options[0];if(opt.getAttribute('role')==='placeholder'&&!opt.selected)opt.parentNode.removeChild(opt);">
+                                                <option role="placeholder" id="hiddenOption">{{duration_url if duration_url else 'Duration'}}</option>
+                                                <option value="Duration">All durations</option>                                             
+                                                {% for duration in alldurations: %}
+                                                <option value={{duration}}>{{duration}}</option>
+                                                {% endfor %} 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <div class="date" id="price1">
+                                                <input type="number" value="{{minprice}}" name = "min_price" class="form-control p-4 datetimepicker-input" placeholder="Price from" data-target="#price1"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <div class="date" id="price2">
+                                                <input type="number" value="{{maxprice}}" name = "max_price" class="form-control p-4 datetimepicker-input" placeholder="Price to" data-target="#price2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3 mb-md-0 my-1">
+                                            <select name = "city" class="custom-select px-4" style="height: 47px;" onchange="var opt=this.options[0];if(opt.getAttribute('role')==='placeholder'&&!opt.selected)opt.parentNode.removeChild(opt);">
+                                                <option role="placeholder" id="hiddenOption">{{city_url if city_url else 'All Cities'}}</option>
+                                                <option value="All Cities">All Cities</option>
+                                                {% for city in allcities: %}
+                                                <option value="{{city}}">{{city}}</option>
+                                                {% endfor %} 
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3  my-1">
+                                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    <!-- Booking End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+    <!-- Destinations Start -->
+    <div class="container-fluid pb-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Bestsellers</h6>
+                <h1>Our Destinations</h1>
+            </div>
+            {% if current_user.is_authenticated and current_user.Email.split('@')[1]=='adventureclub.com': %}
+            <div class="text-center mb-3 pb-3">
+                <a href="{{ url_for('add_trip') }}" class="btn btn-primary m-3">Add new trip</a>
+            </div>
+            {% endif %}
+            {% if tours == []: %}
+            <div class="text-center mb-3 pb-3">
+                <h2>No results</h2>
+                <h6 class="text-primary">Try using other parameters</h6>
+            </div>
+            {% endif %}
+            <div class="row">
+            {% for tour in tours: %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/'+tour.img_file) }}" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{tour.Region}}</small>
+                                <small class="m-0"><i class="fa fa-hourglass-half text-primary mr-2"></i>{{tour.Duration}} Days</small>
+                                <small class="m-0"><i class="fa fa-child text-primary mr-2"></i>{{tour.Children}}</small>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-plane text-primary mr-2"></i>{{tour.City_Of_Departure}}</small>
+                                <small class="m-0"><i class="fa fa-calendar-check text-primary mr-2"></i>{{tour.Start_Date}}</small>
+                                <small class="m-0"><i class="fa fa-calendar-times text-primary mr-2"></i>{{tour.End_Date}}</small>
+                            </div>
+                            <h5 class="text-center" href="">{{tour.Destination}} </h5>
+                            {% if current_user.is_authenticated and current_user.Email.split('@')[1]=='adventureclub.com': %}
+                            <h6 class="text-primary text-center m-0">${{tour.Price}}</h6>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ url_for('update_trip', id=tour.id) }}" class="btn btn-primary m-3" style="background-color:grey; border-color:grey;">Update</a>
+                                <a href="{{ url_for('delete_trip', id=tour.id) }}" class="btn btn-primary m-3" style="background-color:red; border-color:red">Delete</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="mt-4 text-center"href="{{ url_for('participants', tour_id=tour.id) }}">View participants ({{tour.travellers|length}})</a>
+                            </div>
+                            {% else: %}
+                            {% if tour.travellers|length >=25: %}
+                            <div class="d-flex justify-content-center">
+                                <h6 style="color:red">Fully booked</h6>
+                            </div>                            
+                            {% else: %}
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ url_for('enroll', id=tour.id) }}" class="btn btn-primary mt-3">${{tour.Price}}</a>
+                            </div>
+                            {% endif %}{% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Destinations End -->
+
+
+{% endblock content2 %}

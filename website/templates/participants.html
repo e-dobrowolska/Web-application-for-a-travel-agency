@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white">Hello {{current_user.Name}}!</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+    
+    <!--Customers start-->
+<div class="container-fluid pb-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tour {{tour.id}}: Participants</h6>
+                <h1>{{tour.Destination}}, {{tour.Region}}</h1>
+            </div>
+            {% if tour.travellers == []: %}
+            <div class="text-center mb-3 pb-3">
+                <h2>No results</h2>
+            </div>
+            {% endif %}
+            <div class="row">
+            {% for customer in tour.travellers: %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <div class="row px-3 pt-3">
+                            <div class="px-3 pt-3">
+                                <p><b>Name:</b></p>
+                                <p><b>Surname:</b></p>
+                                <p><b>Date of Birth:</b></p>
+                                <p><b>Passport number:</b></p>
+                                <p><b>Passport expires:</b></p>
+                                <p><b>Phone number:</b></p>
+                                <p><b>SSN:</b></p>
+                            </div>
+                            <div class="px-3 pt-3">
+                                <p>{{customer.Name}}</p>
+                                <p>{{customer.Surname}}</p>
+                                <p>{{customer.Date_Of_Birth}}</p>
+                                <p>{{customer.Passport_Number}}</p>
+                                <p>{{customer.Passport_Expiration_Date}}</p>
+                                <p>{{customer.Phone_Number}}</p>
+                                <p>{{customer.SSN}}</p>
+                            </div>
+                        </div>
+                            <div class="d-flex justify-content-center">
+                            <a href="{{ url_for('update_customer', customer_id=customer.id) }}" class="btn btn-primary m-3" style="background-color:grey; border-color:grey">Update</a>
+                            <a href="{{ url_for('resign', customer_id=customer.id, tour_id=tour.id) }}" class="btn btn-primary m-3" style="background-color:red; border-color:red">Delete</a>
+                            </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Customers End -->
+
+    {% endblock content2 %}

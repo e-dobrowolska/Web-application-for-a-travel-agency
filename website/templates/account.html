@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white">Hello {{current_user.Name}}!</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Account</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% endblock content1 %}
+
+
+    {% block content2 %}
+    <!--Tours start-->
+<div class="container-fluid pb-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">dreams</h6>
+                <h1>Booked Trips</h1>
+            </div>
+            {% if current_user.customers == []: %}
+            <div class="text-center mb-3 pb-3">
+                <h2>No results</h2>
+                <a href="{{ url_for('destinations') }}" class="btn btn-primary m-3">Book your first trip</a>
+            </div>
+            {% endif %}
+            {% for customer in current_user.customers: %}
+            <div class="text-left mb-3 pb-3">
+                <h3>{{customer.Name}} {{customer.Surname}}:</h3>
+            </div>
+            {% if customer.travelling == []: %}
+            <div class="text-center mb-3 pb-3">
+                <h3>No results</h3>
+                <a href="{{ url_for('destinations') }}" class="btn btn-primary m-3">Book your first trip</a>
+            </div>
+            {% endif %}
+            <div class="row">
+            {% for tour in customer.travelling: %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="{{ url_for('static', filename='img/destination-'+tour.Destination+'.jpg') }}" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{tour.Region}}</small>
+                                <small class="m-0"><i class="fa fa-hourglass-half text-primary mr-2"></i>{{tour.Duration}} Days</small>
+                                <small class="m-0"><i class="fa fa-child text-primary mr-2"></i>{{tour.Children}}</small>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-plane text-primary mr-2"></i>{{tour.City_Of_Departure}}</small>
+                                <small class="m-0"><i class="fa fa-calendar-check text-primary mr-2"></i>{{tour.Start_Date}}</small>
+                                <small class="m-0"><i class="fa fa-calendar-times text-primary mr-2"></i>{{tour.End_Date}}</small>
+                            </div>
+                            <h5 class="text-center" href="">{{tour.Destination}} </h5>
+                            <h6 class="text-primary text-center m-0">${{tour.Price}}</h6>
+                            <div class="d-flex justify-content-center">
+                            <a href="{{ url_for('resign', tour_id=tour.id, customer_id=customer.id) }}" class="btn btn-primary m-3" style="background-color:red; border-color:red">Resign</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- Tours End -->
+    
+    <!--Customers start-->
+<div class="container-fluid pb-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">family</h6>
+                <h1>Related Customers</h1>
+            </div>
+            {% if current_user.customers == []: %}
+            <div class="text-center mb-3 pb-3">
+                <h2>No results</h2>
+                <a href="{{ url_for('destinations') }}" class="btn btn-primary m-3">Book your first trip</a>
+            </div>
+            {% endif %}
+            <div class="row">
+            {% for customer in current_user.customers: %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <div class="row px-3 pt-3">
+                            <div class="px-3 pt-3">
+                                <p><b>Name:</b></p>
+                                <p><b>Surname:</b></p>
+                                <p><b>Date of Birth:</b></p>
+                                <p><b>Passport number:</b></p>
+                                <p><b>Passport expires:</b></p>
+                                <p><b>Phone number:</b></p>
+                                <p><b>SSN:</b></p>
+                            </div>
+                            <div class="px-3 pt-3">
+                                <p>{{customer.Name}}</p>
+                                <p>{{customer.Surname}}</p>
+                                <p>{{customer.Date_Of_Birth}}</p>
+                                <p>{{customer.Passport_Number}}</p>
+                                <p>{{customer.Passport_Expiration_Date}}</p>
+                                <p>{{customer.Phone_Number}}</p>
+                                <p>{{customer.SSN}}</p>
+                            </div>
+                        </div>
+                            <div class="d-flex justify-content-center">
+                            <a href="{{ url_for('update_customer', customer_id=customer.id) }}" class="btn btn-primary m-3" style="background-color:grey; border-color:grey">Update</a>
+
+                            </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Customers End -->
+    
+    {% endblock content2 %}

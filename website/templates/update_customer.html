@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content1 %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Update Customer</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="">Account</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Update Customer </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+    {% endblock content1 %}
+
+    {% block content2 %}
+ <!-- Add Start -->
+<div class="container-fluid py-5">
+            <div class="container py-5">
+                <div  class="text-center mb-3 pb-3">
+                    <h1>Customer {{customer.id}}</h1>
+                </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="signupForm" novalidate="novalidate"  method="POST">
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" value="{{customer.Name}}" class="form-control p-4" name="name" id="name" placeholder="Name"
+                                            required="required" data-validation-required-message="Please enter participant's name" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                            <input type="text" value="{{customer.Surname}}" class="form-control p-4" name="surname" id="surname" placeholder="Surname"
+                                            required="required" data-validation-required-message="Please enter participant's surname" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input type="text" value="{{dob_display}}" name = "date_of_birth" class="form-control p-4 datetimepicker-input" placeholder="Date of Birth" data-target="#date1" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" value="{{customer.Passport_Number}}" class="form-control p-4" name="passport_number" id="passport_number" placeholder="Passport Number"
+                                            required="required" data-validation-required-message="Please enter participant's passport number" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date2" data-target-input="nearest">
+                                        <input type="text" value="{{ped_display}}" name = "passport_expiration_date" class="form-control p-4 datetimepicker-input" placeholder="Passport expiration date" data-target="#date2" data-toggle="datetimepicker"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" value="{{customer.Phone_Number}}" class="form-control p-4" name="phone_number" id="phone_number" placeholder="Phone number"
+                                            required="required" data-validation-required-message="Please enter participant's phone_number" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="control-group">
+                                        <input type="text" value="{{customer.SSN}}"class="form-control p-4" name="ssn" id="ssn" placeholder="SSN"
+                                            required="required" data-validation-required-message="Please enter participant's SSN" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4 mt-3" type="submit" id="submitButton">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Add End -->
+    {% endblock content2 %}
